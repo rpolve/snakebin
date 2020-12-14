@@ -87,7 +87,7 @@ def new_job():
     if not request.json or not 'title' in request.json:
         abort(400)
 
-    job_id = max([len(Job.query.all()), 1])
+    job_id = len(Job.query.all()) + 1
 
     job = {
         'id': job_id,
@@ -130,20 +130,22 @@ def get_jobs():
     jobs = []
 
     for j in jobs_query:
+        elapsed = int(time()) - j.submitted
         k = {
             'id': j.job_id,
             'title': j.title,
             'complete': False,
             'results': j.results,
             'elapsed': {
-                'seconds': j.elapsed,
-                'human': get_human_time(j.elapsed),
+                'seconds': elapsed,
+                'human': get_human_time(elapsed),
             },
             'submitted': {
                 'seconds': j.submitted,
                 'human': strftime('%Y/%m/%d %H:%M', gmtime(j.submitted)),
             }
         }
+        jobs.append(k)
 
     return jsonify({'jobs': jobs})
 
