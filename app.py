@@ -27,9 +27,35 @@ def post_results(job_id):
         abort(400)
     if 'results' in request.json and type(request.json['results']) != str:
         abort(400)
+    if job[0]['complete'] == True:
+        abort(400)
     job[0]['complete'] = True
     job[0]['results'] = request.json['results']
-    job[0]['elapsed'] = str(int(time() - job[0]['submitted']['seconds']) // 60) + ' minutes'
+    seconds = int(time() - job[0]['submitted']['seconds'])
+    job[0]['elapsed'] = {
+        'seconds': seconds,
+        'human': ""
+    }
+    job[0]['elapsed']['seconds'] = seconds
+    minutes = seconds // 60
+    hours = minutes // 60
+    job[0]['elapsed']['human'] = ""
+    if hours > 0:
+        job[0]['elapsed']['human'] += "{} hour".format(hours)
+        if hours > 1:
+            job[0]['elapsed']['human'] += 's'
+        minutes = minutes % 60
+    if minutes > 0:
+        job[0]['elapsed']['human'] += " {} minute".format(minutes)
+        if minutes > 1:
+            job[0]['elapsed']['human'] += 's'
+        seconds = seconds % 60
+    if seconds >= 0 and hours < 1:
+        job[0]['elapsed']['human'] += " {} second".format(seconds)
+        if seconds != 1:
+            job[0]['elapsed']['human'] += 's'
+    job[0]['elapsed']['human'] = job[0]['elapsed']['human'].lstrip()
+
     return jsonify({'job': job[0]})
 
 
