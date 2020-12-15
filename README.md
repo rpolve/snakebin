@@ -2,6 +2,8 @@
 
 This is a very basic request bin. Use with uWSGI.
 
+I made this for integrating with another project, as a way of handling asynchronous function calls which may take some time to complete and have a plain text output.
+
 ## Example usage
 
 ### List all jobs
