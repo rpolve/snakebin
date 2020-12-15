@@ -1,5 +1,6 @@
 from snakebin import db
 
+
 class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64), index=True, unique=False)
@@ -9,4 +10,4 @@ class Job(db.Model):
     submitted = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<Job_id {}>'.format(self.id)
+        return "<Job_id {}>".format(self.id)
