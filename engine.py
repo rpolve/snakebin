@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 """
     engine.py
@@ -6,7 +6,7 @@
 
     Author: Roberto Polverelli Monti <rpolverelli at gmail>
     Created on: 2020 Dec 14
-    Description:
+    Description: restful API for keeping track of time consuming jobs.
 """
 
 from flask import jsonify, abort, make_response, request
