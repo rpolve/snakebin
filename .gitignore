@@ -1,3 +1,4 @@
 .direnv
 *__pycache__
 app.db
+snakebin.db
