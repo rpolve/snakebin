@@ -10,7 +10,7 @@ Remember to `export FLASK_APP=engine.py` and `flask db upgrade` first.
 
 ### List all jobs
 
-`curl <GATEWAY>/api/v1.0/jobs`
+`curl <GATEWAY>/jobs`
 
 ```
 {
@@ -22,7 +22,7 @@ Remember to `export FLASK_APP=engine.py` and `flask db upgrade` first.
 
 The header and job title are mandatory.
 
-`curl -i -H "Content-Type: application/json" -X POST -d '{"title":"non-unique string up to 64 chars"}' http://<GATEWAY>/api/v1.0/jobs`
+`curl -i -H "Content-Type: application/json" -X POST -d '{"title":"non-unique string up to 64 chars"}' http://<GATEWAY>/jobs`
 
 ```
 {
@@ -47,7 +47,7 @@ The header and job title are mandatory.
 
 Wether it's complete or not, get information about a job by referencing its number id.
 
-`curl <GATEWAY>/api/v1.0/jobs/1`
+`curl <GATEWAY>/jobs/1`
 
 ```
 {
@@ -72,7 +72,7 @@ Wether it's complete or not, get information about a job by referencing its numb
 
 It will be marked complete and won't accept further updates.
 
-`curl -i -H "Content-Type: application/json" -X PUT -d '{"results":"This data has no fixed length"}' <GATEWAY>/api/v1.0/jobs/1`
+`curl -i -H "Content-Type: application/json" -X PUT -d '{"results":"This data has no fixed length"}' <GATEWAY>/jobs/1`
 
 ```
 {
