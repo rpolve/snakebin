@@ -19,11 +19,12 @@ from hashlib import sha1
 import os
 
 
-def new_filename():
+def new_filename(file_ext):
     filename = str(time()).encode("utf-8")
     filename = sha1(filename).hexdigest()[:4]
+    filename += "." + file_ext
     if os.path.exists(os.path.join(app.config["UPLOAD_FOLDER"], filename)):
-        new_filename()
+        new_filename(file_ext=file_ext)
     return filename
 
 
@@ -32,8 +33,14 @@ def upload_file():
     if "file" not in request.files:
         abort(400)
     file = request.files["file"]
-    if file:
-        filename = secure_filename(new_filename())
+    try:
+        file_ext = file.filename.rsplit(".", 1)[1].lower()
+    except IndexError:
+        file_ext = None
+    if file_ext not in app.config["ALLOWED_EXTENSIONS"]:
+        abort(400)
+    else:
+        filename = secure_filename(new_filename(file_ext))
         try:
             os.mkdir(app.config["UPLOAD_FOLDER"])
         except FileExistsError:

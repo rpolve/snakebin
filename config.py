@@ -6,5 +6,6 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'snakebin.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
     UPLOAD_FOLDER = os.path.join(basedir, 'uploads')
     GATEWAY = 'localhost:5000'
