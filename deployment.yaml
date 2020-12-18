@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: snakebin
-        image: rpolve:snakebin
+        image: rpolve/snakebin
         ports:
           - containerPort: 8089
 ---
@@ -23,6 +23,7 @@ kind: Service
 metadata:
   name: snakebin
 spec:
+  type: NodePort
   ports:
   - port: 8089
     targetPort: 8089
