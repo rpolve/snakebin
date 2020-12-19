@@ -26,7 +26,7 @@ Can additionally store files according to a set of allowed extensions (see [conf
 
 The header and job title are mandatory.
 
-`curl -i -H "Content-Type: application/json" -X POST -d '{"title":"non-unique string up to 64 chars"}' http://<GATEWAY>/jobs`
+`curl -i -H "Content-Type: application/json" -X POST -d '{"title":"non-unique string up to 64 chars"}' <GATEWAY>/jobs`
 
 ```
 {
