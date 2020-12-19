@@ -9,7 +9,7 @@
     Description: restful API for keeping track of time consuming jobs.
 """
 
-from flask import redirect, url_for, send_from_directory
+from flask import url_for, send_from_directory
 from flask import jsonify, abort, make_response, request
 from snakebin import app, db
 from snakebin.models import Job
