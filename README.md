@@ -6,6 +6,10 @@ I made this for integrating with another project, as a way of handling asynchron
 
 Remember to `export FLASK_APP=engine.py` and `flask db upgrade` first.
 
+## File uploads
+
+Can additionally store files according to a set of allowed extensions (see [[config.py]]), simply by `curl -F'file=@example.txt' <GATEWAY>`.
+
 ## Example usage
 
 ### List all jobs
