@@ -17,6 +17,9 @@ spec:
         image: rpolve/snakebin
         ports:
           - containerPort: 8089
+        env:
+          - name: GATEWAY
+            value: bin.example.com
 ---
 apiVersion: v1
 kind: Service
