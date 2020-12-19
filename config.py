@@ -8,4 +8,4 @@ class Config(object):
 
     ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
     UPLOAD_FOLDER = os.path.join(basedir, 'uploads')
-    GATEWAY = os.environ.get('GATEWAY') or 'UNCONFIGURED'
+    GATEWAY = os.environ.get('GATEWAY') or '<THIS DOMAIN>'

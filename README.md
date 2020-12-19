@@ -8,7 +8,7 @@ Remember to `export FLASK_APP=engine.py` and `flask db upgrade` first.
 
 ## File uploads
 
-Can additionally store files according to a set of allowed extensions (see [config.py](config.py)), simply by `curl -F'file=@example.txt' <GATEWAY>`.
+Can additionally store files according to a set of allowed extensions (see [config.py](config.py)), simply by `curl -F'file=@example.txt' <GATEWAY>`. In order to correctly display the domain of the returned URL, a `GATEWAY` env var should be used.
 
 ## Example usage
 
