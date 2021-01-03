@@ -177,7 +177,7 @@ def get_job(id):
 
 
 @app.errorhandler(400)
-def not_found(error):
+def bad_request(error):
     return make_response(jsonify({"error": "Bad request"}), 400)
 
 
@@ -187,7 +187,7 @@ def not_found(error):
 
 
 @app.errorhandler(405)
-def not_found(error):
+def not_allowed(error):
     return make_response(jsonify({"error": "Method not allowed"}), 404)
 
 
